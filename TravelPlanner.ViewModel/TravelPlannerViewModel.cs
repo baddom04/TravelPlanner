@@ -34,18 +34,14 @@ namespace TravelPlanner.ViewModel
             get { return _selectedTrip; }
             set
             {
-                if (value is null)
+                if(value is null)
                 {
                     _selectedTrip = value;
                     OnPropertyChanged();
                     return;
                 }
-
-                if (_selectedTrip != value)
-                {
-                    _selectedTrip = value;
-                    OnSelectionChanged();
-                }
+                _selectedTrip = value;
+                OnSelectionChanged();
             }
         }
 

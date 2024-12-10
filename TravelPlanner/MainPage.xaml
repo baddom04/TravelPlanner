@@ -8,11 +8,11 @@
             Spacing="10">
             <Label Text="Trips" FontSize="35" HorizontalTextAlignment="Center" Margin="10"/>
 
-            <ListView ItemsSource="{Binding Trips}" SelectedItem="{Binding SelectedTrip}">
+            <ListView ItemsSource="{Binding Trips}" SelectedItem="{Binding SelectedTrip, Mode=TwoWay}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <VerticalStackLayout Spacing="10" Margin="10">
+                            <VerticalStackLayout Spacing="10" Margin="10" MinimumHeightRequest="50">
                                 <Border HeightRequest="3" BackgroundColor="White" Opacity="1"/>
                                 <HorizontalStackLayout Spacing="5" Margin="0">
                                     <Label Text="Destination: "/>
