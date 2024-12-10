@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TravelPlanner.MainPage"
+             WidthRequest="350"
+             HeightRequest="600">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30,0"
+            Spacing="10">
+            <Label Text="Trips" FontSize="35" HorizontalTextAlignment="Center" Margin="10"/>
+
+            <ListView ItemsSource="{Binding Trips}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <VerticalStackLayout Spacing="10" Margin="10">
+                                <Border HeightRequest="3" BackgroundColor="White" Opacity="1"/>
+                                <HorizontalStackLayout Spacing="5" Margin="0">
+                                    <Label Text="Destination: "/>
+                                    <Label Text="{Binding Destination}"/>
+                                </HorizontalStackLayout>
+                                <HorizontalStackLayout Spacing="5" Margin="0">
+                                    <Label Text="Begin:"/>
+                                    <Label Text="{Binding Begin}"/>
+                                </HorizontalStackLayout>
+                                <HorizontalStackLayout Spacing="5" Margin="0">
+                                    <Label Text="End:"/>
+                                    <Label Text="{Binding End}"/>
+                                </HorizontalStackLayout>
+                                <Border HeightRequest="3" BackgroundColor="White" Opacity="1"/>
+                            </VerticalStackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button HorizontalOptions="Center" Text="Add new trip" Margin="10" BackgroundColor="Gray" Command="{Binding AddNewItemCommand}" x:Name="_addNewItemBtn"/>
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
