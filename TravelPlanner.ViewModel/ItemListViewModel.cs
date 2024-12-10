@@ -12,13 +12,20 @@ namespace TravelPlanner.ViewModel
         public event EventHandler? SaveTrip;
         public ItemListViewModel()
         {
-            ItemViewModel itemViewModel = new();
-            itemViewModel.NameChanged += LastItemViewModel_NameChanged;
-            Items.Add(itemViewModel);
+            InitializeList();
 
             GoBackOneCommand = new DelegateCommand(GoBackOne_Command);
             SaveTripCommand = new DelegateCommand(SaveTrip_Command);
         }
+
+        public void InitializeList()
+        {
+            Items.Clear();
+            ItemViewModel itemViewModel = new();
+            itemViewModel.NameChanged += LastItemViewModel_NameChanged;
+            Items.Add(itemViewModel);
+        }
+
         private void GoBackOne_Command(object? obj)
         {
             OnBackToNewTripForm();
@@ -38,7 +45,8 @@ namespace TravelPlanner.ViewModel
 
         private void LastItemViewModel_NameChanged(object? sender, EventArgs e)
         {
-            AddEmptyItem();
+            if(!string.IsNullOrWhiteSpace(Items.Last().Name))
+                AddEmptyItem();
         }
         private void AddEmptyItem()
         {

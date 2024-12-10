@@ -58,6 +58,7 @@ namespace TravelPlanner.ViewModel
             Beginning = DateTime.Now;
             Ending = DateTime.Now;
             ErrorMessage = null;
+            ItemListViewModel.InitializeList();
         }
         private void ItemListViewModel_SaveTrip(object? sender, EventArgs e)
         {
