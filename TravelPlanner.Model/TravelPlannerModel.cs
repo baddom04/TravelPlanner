@@ -5,7 +5,8 @@ namespace TravelPlanner.Model
     public class TravelPlannerModel
     {
         private readonly TravelPlannerPersistor _persistor;
-        public List<Trip> Trips { get; private set; }
+        private List<Trip> _trips;
+
         public List<Item> Items { get; private set; }
 
         public event EventHandler? ItemsUpdated;
@@ -14,7 +15,7 @@ namespace TravelPlanner.Model
         public TravelPlannerModel()
         {
             _persistor = new TravelPlannerPersistor();
-            Trips = [];
+            _trips = [];
             Items = [];
         }
         public async Task LoadStateAsync()
@@ -23,7 +24,7 @@ namespace TravelPlanner.Model
 
             if (trips is null) return;
 
-            Trips = trips.Trips;
+            _trips = trips.Trips;
             OnTripsUpdated();
 
             Items = trips.Items;
@@ -31,7 +32,18 @@ namespace TravelPlanner.Model
         }
         public async Task SaveStateAsync()
         {
-            await _persistor.Save(new AppState(Trips, Items));
+            await _persistor.Save(new AppState(_trips, Items));
+        }
+        public List<Trip> Trips => [.. _trips];
+        public void AddTrip(Trip trip)
+        {
+            _trips.Add(trip);
+            OnTripsUpdated();
+        }
+        public void RemoveTrip(Trip trip)
+        {
+            _trips.Remove(trip);
+            OnTripsUpdated();
         }
         private void OnTripsUpdated() => TripsUpdated?.Invoke(this, new EventArgs());
         private void OnItemsUpdated() => ItemsUpdated?.Invoke(this, new EventArgs());

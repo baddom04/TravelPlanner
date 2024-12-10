@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TravelPlanner.CheckItemList"
+             Title="CheckItemList"
+             WidthRequest="350"
+             HeightRequest="600"
+             BindingContext="{Binding TripDetailsPageViewModel.CheckItemListViewModel}">
+    <VerticalStackLayout Padding="30, 0" Spacing="15">
+        <Grid ColumnDefinitions="*" Margin="0, 20, 0, 0">
+            <Button Grid.Column="0" HorizontalOptions="Start" Text="Back" BackgroundColor="Gray" TextColor="White" Command="{Binding GoBackOneCommand}"/>
+            <Label  Grid.Column="0" Text="Trip details" FontSize="20" HorizontalOptions="Center" VerticalOptions="Center"/>
+        </Grid>
+        <CollectionView ItemsSource="{Binding ItemsViewModels}" SelectionMode="None">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame Padding="10" Margin="5" BackgroundColor="Gray" CornerRadius="5">
+                        <Grid ColumnDefinitions="Auto, 20, *" VerticalOptions="Center">
+                            <CheckBox Grid.Column="0" IsChecked="{Binding IsChecked}" VerticalOptions="Center" />
+
+                            <Label Grid.Column="1" Text="{Binding Quantity}" VerticalOptions="Center" FontAttributes="Bold" />
+
+                            <Label Grid.Column="2" Text="{Binding Name}" VerticalOptions="Center" FontSize="16" />
+                        </Grid>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </VerticalStackLayout>
+</ContentPage>

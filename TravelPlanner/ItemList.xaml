@@ -4,26 +4,29 @@
              x:Class="TravelPlanner.ItemList"
              Title="ItemList"
              WidthRequest="350"
-             HeightRequest="600">
+             HeightRequest="600"
+             BindingContext="{Binding NewTripFormPageViewModel.ItemListViewModel}">
     <VerticalStackLayout Padding="30"
                          Spacing="15">
         <Grid ColumnDefinitions="Auto, *, Auto">
             <Button Grid.Column="0" Text="Back" HeightRequest="30"
                     BackgroundColor="Gray" TextColor="White"
-                    VerticalOptions="Center"/>
+                    VerticalOptions="Center" Command="{Binding GoBackOneCommand}"/>
             <Label Grid.Column="1" Text="Things to pack" FontSize="20" VerticalOptions="Center" HorizontalOptions="Center"/>
-            <Button Grid.Column="2" Text="Save" HeightRequest="30"/>
+            <Button Grid.Column="2" Text="Save" HeightRequest="30" Command="{Binding SaveTripCommand}"/>
         </Grid>
 
-        <VerticalStackLayout>
-            <Border HeightRequest="1" BackgroundColor="White" Opacity="50"/>
-            <HorizontalStackLayout Spacing="5" Margin="0">
-                <CheckBox/>
-                <Label Text="toothbrush"  VerticalOptions="Center"/>
-            </HorizontalStackLayout>
-            <Border HeightRequest="1" BackgroundColor="White" Opacity="50"/>
-        </VerticalStackLayout>
-
-        <Button Text="Add" WidthRequest="100" HeightRequest="25"/>
+        <CollectionView ItemsSource="{Binding Items}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <VerticalStackLayout>
+                        <Grid Margin="10" ColumnDefinitions="Auto, *">
+                            <Entry Keyboard="Numeric" Text="{Binding Quantity}" Grid.Column="0"/>
+                            <Entry Placeholder="Your item's name..." Text="{Binding Name}" Grid.Column="1"/>
+                        </Grid>
+                    </VerticalStackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
     </VerticalStackLayout>
 </ContentPage>
