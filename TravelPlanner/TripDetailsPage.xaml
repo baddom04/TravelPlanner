@@ -4,8 +4,6 @@
              xmlns:converters="clr-namespace:TravelPlanner.Converters"
              x:Class="TravelPlanner.TripDetailsPage"
              Title="TripDetailsPage"
-             WidthRequest="350"
-             HeightRequest="600"
              BindingContext="{Binding TripDetailsPageViewModel}">
     <ContentPage.Resources>
         <converters:DateTimeToDateConverter x:Key="DateTimeToDateConverter"/>
@@ -24,7 +22,7 @@
             <Label Text="{Binding TripViewModel.Activities}" FontSize="18" />
 
             <Label Text="Transports:" FontAttributes="Bold" />
-            <CollectionView x:Name="TransportsCollection" HeightRequest="100" ItemsSource="{Binding TripViewModel.Transports}">
+            <CollectionView x:Name="TransportsCollection" ItemsSource="{Binding TripViewModel.Transports}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Frame Padding="10" Margin="5" CornerRadius="5" BackgroundColor="Gray">

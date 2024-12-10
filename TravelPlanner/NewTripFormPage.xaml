@@ -4,8 +4,6 @@
              xmlns:converters="clr-namespace:TravelPlanner.Converters"
              x:Class="TravelPlanner.NewTripFormPage"
              Title="NewTripFormPage"
-             WidthRequest="350"
-             HeightRequest="600"
              BindingContext="{Binding NewTripFormPageViewModel}">
     <ContentPage.Resources>
         <converters:TransportToNameConverter x:Key="TransportToNameConverter"/>

@@ -3,8 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TravelPlanner.CheckItemList"
              Title="CheckItemList"
-             WidthRequest="350"
-             HeightRequest="600"
              BindingContext="{Binding TripDetailsPageViewModel.CheckItemListViewModel}">
     <VerticalStackLayout Padding="30, 0" Spacing="15">
         <Grid ColumnDefinitions="*" Margin="0, 20, 0, 0">

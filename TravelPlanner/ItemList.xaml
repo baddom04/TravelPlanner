@@ -3,17 +3,15 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TravelPlanner.ItemList"
              Title="ItemList"
-             WidthRequest="350"
-             HeightRequest="600"
              BindingContext="{Binding NewTripFormPageViewModel.ItemListViewModel}">
     <VerticalStackLayout Padding="30"
                          Spacing="15">
         <Grid ColumnDefinitions="Auto, *, Auto">
-            <Button Grid.Column="0" Text="Back" HeightRequest="30"
+            <Button Grid.Column="0" Text="Back"
                     BackgroundColor="Gray" TextColor="White"
                     VerticalOptions="Center" Command="{Binding GoBackOneCommand}"/>
             <Label Grid.Column="1" Text="Things to pack" FontSize="20" VerticalOptions="Center" HorizontalOptions="Center"/>
-            <Button Grid.Column="2" Text="Save" HeightRequest="30" Command="{Binding SaveTripCommand}"/>
+            <Button Grid.Column="2" Text="Save" Command="{Binding SaveTripCommand}"/>
         </Grid>
 
         <CollectionView ItemsSource="{Binding Items}">
