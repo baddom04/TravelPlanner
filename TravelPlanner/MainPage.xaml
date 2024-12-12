@@ -8,7 +8,7 @@
             Spacing="10">
             <Label Text="Trips" FontSize="35" HorizontalTextAlignment="Center" Margin="10"/>
 
-            <ListView ItemsSource="{Binding Trips}" SelectedItem="{Binding SelectedTrip, Mode=TwoWay}" VerticalOptions="FillAndExpand">
+            <ListView ItemsSource="{Binding Trips}" SelectedItem="{Binding SelectedTrip, Mode=TwoWay}" RowHeight="127">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
